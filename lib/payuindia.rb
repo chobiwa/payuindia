@@ -10,7 +10,7 @@ module PayuIndia
   self.production_url = 'https://secure.payu.in/_payment.php'
 
   def self.service_url
-    defined?(Rails) && Rails.env == 'production' ? self.production_url : self.test_url
+    defined?(Rails) && Rails.configuration.payu.env == 'production' ? self.production_url : self.test_url
   end
 
   def self.notification(post, options = {})
